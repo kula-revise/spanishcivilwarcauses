@@ -1,0 +1,645 @@
+<title>Spanish Civil War Causes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a station rail on the left (top on phones), one station at a time on the right, clock in a sticky bar. Palette drawn from the Second Republic tricolour: red, gold, morado. */
+:root{
+  --bg:#f2f0f4; --surface:#fbfafc; --sunk:#e9e5ed; --ink:#1f1a26; --muted:#5b5466; --line:#d6cfdc;
+  --red:#a8261d; --gold:#8a6408; --morado:#5b2a6e; --morado-soft:#ece2f1;
+  --ok:#2f6b3a; --ok-soft:#e1efe3; --bad:#a8261d; --bad-soft:#f6e1df;
+  --tag-k:#dbe7f5; --tag-a:#f4e7c6; --tag-e:#e8dcf0; --tag-n:#e4e1e6;
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#15111a; --surface:#1e1925; --sunk:#110d15; --ink:#ece7f1; --muted:#a79fb2; --line:#3a3245;
+  --red:#ef7a6d; --gold:#e2b64e; --morado:#c29adb; --morado-soft:#2c2136;
+  --ok:#7fc58b; --ok-soft:#1c2e20; --bad:#ef7a6d; --bad-soft:#35201d;
+  --tag-k:#1f3047; --tag-a:#3a3016; --tag-e:#33254a; --tag-n:#2c2831; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#15111a; --surface:#1e1925; --sunk:#110d15; --ink:#ece7f1; --muted:#a79fb2; --line:#3a3245;
+  --red:#ef7a6d; --gold:#e2b64e; --morado:#c29adb; --morado-soft:#2c2136;
+  --ok:#7fc58b; --ok-soft:#1c2e20; --bad:#ef7a6d; --bad-soft:#35201d;
+  --tag-k:#1f3047; --tag-a:#3a3016; --tag-e:#33254a; --tag-n:#2c2831; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55}
+.flag{height:6px;display:grid;grid-template-columns:1fr 1fr 1fr}
+.flag i:nth-child(1){background:var(--red)}.flag i:nth-child(2){background:var(--gold)}.flag i:nth-child(3){background:var(--morado)}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+.bar{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between;padding:10px 16px;max-width:1180px;margin:0 auto}
+.brand{display:flex;flex-direction:column;min-width:0}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand h1{font-family:var(--display);font-weight:800;font-size:28px;line-height:1;margin:2px 0 0;letter-spacing:.01em;text-wrap:balance}
+.clock{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:14px;font-variant-numeric:tabular-nums}
+.clock .t{font-size:22px;font-weight:500}
+.clock .plan{color:var(--muted);font-size:12.5px}
+button{font:inherit;cursor:pointer}
+.btn{font-family:var(--mono);font-size:13.5px;border:1px solid var(--ink);background:var(--ink);color:var(--surface);padding:7px 13px;border-radius:3px}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn:focus-visible,.chip:focus-visible,.tok:focus-visible,.bin:focus-visible,textarea:focus-visible,select:focus-visible,input:focus-visible,.railbtn:focus-visible,.sent:focus-visible{outline:2px solid var(--morado);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:16px;padding-block:22px 60px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:28px}
+nav.rail{position:sticky;top:90px;align-self:start;display:flex;flex-direction:column;gap:2px}
+.railbtn{display:grid;grid-template-columns:26px 1fr auto;gap:8px;align-items:baseline;text-align:left;border:0;background:transparent;color:var(--ink);padding:7px 8px;border-radius:3px}
+.railbtn .n{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.railbtn .m{font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.railbtn .lbl{font-size:15px;line-height:1.3}
+.railbtn[aria-current="true"]{background:var(--morado-soft)}
+.railbtn[aria-current="true"] .lbl{font-weight:600}
+.railbtn.done .n{color:var(--ok)}
+.railtotal{font-family:var(--mono);font-size:12px;color:var(--muted);padding:8px;border-top:1px solid var(--line);margin-top:6px}
+main{min-width:0}
+.st-head{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:18px}
+.st-head h2{font-family:var(--display);font-weight:800;font-size:clamp(32px,5vw,46px);line-height:1;margin:0;text-wrap:balance}
+.st-head .meta{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.lede{font-size:19px;max-width:66ch;margin:0 0 18px}
+p{max-width:68ch}
+h3{font-family:var(--display);font-weight:600;font-size:24px;margin:30px 0 8px;letter-spacing:.01em}
+.task{margin:18px 0 26px}
+.howto{font-family:var(--mono);font-size:13px;color:var(--muted);margin:0 0 10px;max-width:70ch}
+.think{border-left:3px solid var(--morado);background:var(--surface);padding:14px 16px;margin:18px 0;max-width:760px}
+.think .eyebrow{color:var(--morado)}
+.think p{margin:4px 0 10px}
+textarea,input[type=text],select{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:3px;padding:9px 10px}
+textarea{min-height:90px;resize:vertical;line-height:1.5}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);padding:13px 15px;border-radius:3px;min-width:0}
+.card h4{margin:0 0 4px;font-family:var(--display);font-weight:600;font-size:21px}
+.card p{margin:0;font-size:15.5px}
+.card .eyebrow{display:block;margin-bottom:2px}
+.pool{display:flex;flex-wrap:wrap;gap:8px;padding:12px;background:var(--sunk);border-radius:3px;min-height:54px;margin-bottom:12px}
+.chip{border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:7px 11px;border-radius:3px;font-size:15px;text-align:left;line-height:1.35;max-width:100%}
+.chip.sel{border-color:var(--morado);box-shadow:0 0 0 2px var(--morado)}
+.chip.right{border-color:var(--ok);background:var(--ok-soft)}
+.chip.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.bin{border:1px dashed var(--muted);border-radius:3px;padding:10px;background:transparent;color:var(--ink);text-align:left;display:flex;flex-direction:column;gap:6px;min-height:90px;min-width:0}
+.bin .bh{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.bin.armed{border-color:var(--morado);border-style:solid;background:var(--morado-soft)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+.fb{font-family:var(--mono);font-size:13.5px;margin-top:8px;max-width:74ch}
+.fb.good{color:var(--ok)}.fb.meh{color:var(--gold)}
+.mcq{background:var(--surface);border:1px solid var(--line);padding:14px 16px;margin-bottom:10px;border-radius:3px}
+.mcq .q{margin:0 0 8px;font-weight:600}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px}
+.mcq .ex{font-size:14.5px;color:var(--muted);margin:8px 0 0}
+.seq{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+.seq ol{margin:0;padding:12px 12px 12px 34px;background:var(--sunk);border-radius:3px;min-height:80px;display:flex;flex-direction:column;gap:6px}
+.seq ol li{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.seq ol li .chip{font-family:var(--body);width:100%}
+.date{display:inline-block;font-family:var(--mono);font-size:12px;color:var(--morado);margin-right:6px}
+.pairs{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+.pairs .col{display:flex;flex-direction:column;gap:8px}
+.badge{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--morado);color:var(--surface);font-family:var(--mono);font-size:12px;margin-right:8px;vertical-align:middle}
+.ranklist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;max-width:700px}
+.ranklist li{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:10px;align-items:center;background:var(--surface);border:1px solid var(--line);padding:8px 10px;border-radius:3px}
+.ranklist .pos{font-family:var(--display);font-weight:800;font-size:22px;color:var(--red)}
+.ranklist .mv{display:flex;gap:4px}
+.ranklist .mv button{border:1px solid var(--line);background:var(--bg);color:var(--ink);width:32px;height:30px;border-radius:3px}
+.hist{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin:10px 0}
+.hist .card h4{font-size:19px}
+.hist .lean{font-family:var(--mono);font-size:12px;color:var(--morado);margin-top:8px;display:block}
+.slider{max-width:700px}
+.slider input{width:100%;accent-color:var(--morado)}
+.slider .ends{display:flex;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+.brushes{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.brush{border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:6px 11px;border-radius:3px;font-family:var(--mono);font-size:13px}
+.brush[aria-pressed="true"]{box-shadow:0 0 0 2px var(--ink)}
+.qline{font-family:var(--display);font-weight:600;font-size:clamp(24px,4vw,34px);line-height:1.35;display:flex;flex-wrap:wrap;gap:4px 8px;background:var(--surface);border:1px solid var(--line);padding:16px;border-radius:3px}
+.tok{border:0;background:transparent;color:var(--ink);font:inherit;padding:0 4px;border-radius:3px;border-bottom:3px solid transparent}
+.c-command{background:var(--tag-a);border-bottom-color:var(--gold)}
+.c-concept{background:var(--tag-e);border-bottom-color:var(--morado)}
+.c-focus{background:var(--tag-k);border-bottom-color:var(--ink)}
+.c-scope{background:var(--bad-soft);border-bottom-color:var(--red)}
+.bands{width:100%;border-collapse:collapse;font-size:14.5px;min-width:560px}
+.bands th,.bands td{border-top:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+.bands th{font-family:var(--mono);font-size:12.5px;font-weight:500;color:var(--muted);white-space:nowrap}
+.scroll{overflow-x:auto;margin:8px 0 16px}
+.para{background:var(--surface);border:1px solid var(--line);padding:16px;border-radius:3px;margin:12px 0 22px}
+.para h4{margin:0 0 8px;font-family:var(--display);font-weight:600;font-size:22px}
+.ptext{line-height:1.8}
+.sent{border:0;background:transparent;color:var(--ink);font:inherit;text-align:left;padding:1px 2px;border-radius:2px;display:inline}
+.sent.t-k{background:var(--tag-k)}.sent.t-a{background:var(--tag-a)}.sent.t-e{background:var(--tag-e)}.sent.t-n{background:var(--tag-n);text-decoration:line-through;text-decoration-color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:8px;font-family:var(--mono);font-size:12.5px;margin-bottom:10px}
+.legend span{padding:3px 8px;border-radius:3px}
+.bandpick{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.bandpick button{font-family:var(--mono);font-size:13px;border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:6px 10px;border-radius:3px}
+.bandpick button[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.verdict{margin-top:12px;padding:12px 14px;background:var(--sunk);border-radius:3px;font-size:15.5px}
+.verdict p{margin:4px 0}
+.thesis{display:grid;gap:10px;max-width:760px}
+.thesis label{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.plan{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.plan label{font-family:var(--mono);font-size:12.5px;color:var(--muted);display:block;margin-bottom:4px}
+.bank{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.bank .chip{font-size:14px;padding:5px 9px}
+.check{display:flex;flex-direction:column;gap:6px;max-width:700px}
+.check label{display:flex;gap:10px;align-items:flex-start;font-size:15.5px}
+.check input{margin-top:5px;accent-color:var(--morado)}
+.timer{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:20px}
+.wc{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.skills{display:grid;gap:10px;max-width:700px}
+.skill{display:grid;grid-template-columns:170px minmax(0,1fr) 54px;gap:10px;align-items:center}
+.skill .nm{font-size:15.5px}
+.skill .track{height:12px;background:var(--sunk);border-radius:2px;overflow:hidden}
+.skill .fill{height:100%;background:var(--morado)}
+.skill .v{font-family:var(--mono);font-size:13px;text-align:right;font-variant-numeric:tabular-nums}
+pre.sum{white-space:pre-wrap;font-family:var(--mono);font-size:13px;background:var(--sunk);padding:14px;border-radius:3px;max-width:760px;max-height:360px;overflow:auto}
+.nextrow{display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--line);margin-top:34px;padding-top:16px}
+.dots{display:flex;align-items:center;gap:6px;flex-basis:100%}
+.dots button{width:10px;height:10px;border-radius:50%;border:1px solid var(--muted);background:transparent;padding:0}
+.dots button[aria-current="true"]{background:var(--morado);border-color:var(--morado)}
+.dots .meta{margin-left:6px}
+.nextrow{margin-top:26px}
+details.bandref{margin:0 0 10px;font-size:15px}
+details.bandref summary{font-family:var(--mono);font-size:13px;color:var(--morado);cursor:pointer}
+.st-head{margin-bottom:14px}
+.opts{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+.mcq{padding:10px 14px}
+.hook{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:22px;align-items:start}
+.hookfig{background:var(--surface);border:1px solid var(--line);padding:12px;border-radius:3px}
+.hookfig svg{width:100%;height:auto;display:block}
+.hookfig .cap{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:6px}
+@media (max-width:820px){
+  .wrap{grid-template-columns:minmax(0,1fr)}
+  nav.rail{position:static;flex-direction:row;overflow-x:auto;gap:4px;padding-bottom:4px}
+  .railbtn{grid-template-columns:auto;white-space:nowrap}
+  .railbtn .m,.railtotal{display:none}
+  .hook,.seq,.pairs{grid-template-columns:minmax(0,1fr)}
+  .skill{grid-template-columns:120px minmax(0,1fr) 48px}
+}
+@media (prefers-reduced-motion:no-preference){.fill{transition:width .4s ease}}
+</style>
+
+<header class="top">
+  <div class="flag" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="bar">
+    <div class="brand"><span class="eyebrow">IB History Paper 2 · Causes and effects of 20th-century wars</span><h1>Why did Spain go to war in 1936?</h1></div>
+    <div class="clock" aria-live="off">
+      <div><div class="t" id="clockT">00:00</div><div class="plan" id="clockPlan">Planned 90 min</div></div>
+      <button class="btn" id="clockBtn" type="button">Start lesson</button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="rail" id="rail" aria-label="Lesson stations"></nav>
+  <main id="main"></main>
+</div>
+
+<script>
+(function(){
+"use strict";
+var KEY="scw-causes-lesson-v1";
+var S={};
+try{var raw=localStorage.getItem(KEY); if(raw) S=JSON.parse(raw)||{};}catch(e){S={};}
+S.scores=S.scores||{}; S.text=S.text||{}; S.data=S.data||{};
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+function $(sel,root){return (root||document).querySelector(sel);}
+function el(tag,attrs,html){var e=document.createElement(tag); if(attrs){for(var k in attrs){if(k==="class")e.className=attrs[k]; else if(k==="text")e.textContent=attrs[k]; else e.setAttribute(k,attrs[k]);}} if(html!=null)e.innerHTML=html; return e;}
+function shuffle(a,seed){var r=a.slice(),s=seed||7;for(var i=r.length-1;i>0;i--){s=(s*9301+49297)%233280;var j=Math.floor(s/233280*(i+1));var t=r[i];r[i]=r[j];r[j]=t;}return r;}
+function setScore(key,got,total,skill){S.scores[key]={got:got,total:total,skill:skill};save();}
+
+/* ---------- reusable pieces ---------- */
+function think(parent,key,prompt,hint){
+  var box=el("div",{class:"think"});
+  box.appendChild(el("span",{class:"eyebrow",text:"Think it through"}));
+  box.appendChild(el("p",null,prompt));
+  var ta=el("textarea",{id:"t-"+key,"aria-label":"Your answer"});
+  ta.placeholder=hint||"Jot your thinking here. We will talk it through.";
+  ta.value=S.text[key]||"";
+  ta.addEventListener("input",function(){S.text[key]=ta.value;save();});
+  box.appendChild(ta); parent.appendChild(box); return ta;
+}
+function brk(m){m.appendChild(el("div",{class:"brk"}));}
+function qrem(m){m.appendChild(el("p",{class:"howto",text:"Question: Examine the long- and short-term causes of one 20th-century war."}));}
+function fb(parent){var f=el("div",{class:"fb","aria-live":"polite"});parent.appendChild(f);return f;}
+
+function mcqSet(parent,key,qs,skill){
+  var st=S.data[key]||{};
+  qs.forEach(function(q,qi){
+    var box=el("div",{class:"mcq"});
+    box.appendChild(el("p",{class:"q"},(qi+1)+". "+q.q));
+    var opts=el("div",{class:"opts"}); var ex=el("p",{class:"ex"}); ex.hidden=true;
+    q.o.forEach(function(o,oi){
+      var b=el("button",{class:"chip",type:"button",text:o});
+      b.addEventListener("click",function(){ if(st[qi]!=null)return; st[qi]=oi; S.data[key]=st; paint(); score();});
+      opts.appendChild(b);
+    });
+    function paint(){ var bs=opts.querySelectorAll("button"); if(st[qi]==null)return;
+      bs.forEach(function(b,bi){ if(bi===q.a)b.classList.add("right"); else if(bi===st[qi])b.classList.add("wrong");});
+      ex.hidden=false; ex.textContent=q.ex; }
+    box.appendChild(opts); box.appendChild(ex); parent.appendChild(box); paint();
+  });
+  function score(){var g=0,n=0;qs.forEach(function(q,i){if(st[i]!=null){n++; if(st[i]===q.a)g++;}}); if(n===qs.length)setScore(key,g,qs.length,skill); save();}
+}
+
+function sorter(parent,key,items,bins,skill,note){
+  var place=(S.data[key]&&S.data[key].place)||{}; var selected=null; var checked=false;
+  var pool=el("div",{class:"pool","aria-label":"Cards to sort"});
+  var binWrap=el("div",{class:"bins"}); var binEls={};
+  bins.forEach(function(b){ var be=el("button",{class:"bin",type:"button"}); be.appendChild(el("span",{class:"bh",text:b.label})); be.addEventListener("click",function(ev){ if(ev.target!==be && ev.target.classList.contains("chip"))return; if(selected==null)return; place[selected]=b.id; selected=null; commit();}); binEls[b.id]=be; binWrap.appendChild(be);});
+  var chips=items.map(function(it,i){ var c=el("button",{class:"chip",type:"button",text:it.t}); c.addEventListener("click",function(ev){ev.stopPropagation(); selected=(selected===i?null:i); checked=false; draw();}); return c;});
+  var order=shuffle(items.map(function(_,i){return i;}),items.length*3);
+  function commit(){S.data[key]={place:place};save();checked=false;draw();}
+  function draw(){
+    order.forEach(function(i){ var c=chips[i]; c.classList.toggle("sel",selected===i); c.classList.remove("right","wrong");
+      if(checked&&place[i]!=null){c.classList.add(place[i]===items[i].b?"right":"wrong");}
+      var dest=place[i]!=null?binEls[place[i]]:pool; if(c.parentNode!==dest)dest.appendChild(c);});
+    Object.keys(binEls).forEach(function(k){binEls[k].classList.toggle("armed",selected!=null);});
+  }
+  parent.appendChild(el("p",{class:"howto",text:note||"Tap a card, then tap the box it belongs in. Tap a placed card to move it again."}));
+  parent.appendChild(pool); parent.appendChild(binWrap);
+  var row=el("div",{class:"row"}); var chk=el("button",{class:"btn",type:"button",text:"Check"}); var rst=el("button",{class:"btn ghost",type:"button",text:"Reset"});
+  row.appendChild(chk); row.appendChild(rst); parent.appendChild(row); var f=fb(parent);
+  chk.addEventListener("click",function(){ var n=0,g=0; items.forEach(function(it,i){if(place[i]!=null){n++; if(place[i]===it.b)g++;}});
+    if(n<items.length){f.className="fb meh";f.textContent=(items.length-n)+" card(s) still to place.";return;}
+    checked=true; draw(); setScore(key,g,items.length,skill);
+    f.className="fb "+(g===items.length?"good":"meh"); f.textContent=g+" of "+items.length+" in the right place."+(g<items.length?" Red cards are in the wrong box. Move them and check again.":" Every card sits where it belongs.");});
+  rst.addEventListener("click",function(){place={};selected=null;commit();f.textContent="";});
+  draw();
+}
+
+/* ---------- content ---------- */
+var FAULTS=[
+ {id:"pol",t:"A rigged political system",b:"From 1875 the Conservatives and Liberals took turns in office under the turno pacífico. Local bosses, the caciques, delivered the votes. Elections changed nothing, so those shut out turned to apathy or to the street."},
+ {id:"land",t:"The land question",b:"In Andalusia and Extremadura a few grandees owned huge estates, the latifundia. Landless braceros worked them for low seasonal wages and went hungry for months. In the north, Catholic smallholders feared the left more than they resented the rich."},
+ {id:"church",t:"A privileged Church",b:"The Concordat of 1851 made Catholicism the state religion and gave the Church a firm hold on schooling. It stood with landowners and the Crown, which bred fierce anticlericalism in the towns."},
+ {id:"army",t:"An army that intervened",b:"The army saw itself as guardian of the nation and staged pronunciamientos when it disliked a government. It had far too many officers, lost the empire in 1898, and was humiliated at Annual in Morocco in 1921. The Africanistas, hardened in colonial war, were its most nationalist wing."},
+ {id:"reg",t:"Centre against the regions",b:"Catalonia and the Basque Country had their own languages and most of Spain's industry. They wanted autonomy. Madrid, the army and the Church saw this as a threat to the unity of Spain. Primo de Rivera clamped down on Catalan identity."},
+ {id:"left",t:"A militant, divided left",b:"The anarchist CNT (1910) rejected parliaments in favour of the general strike, and the FAI (1927) turned to violence. The socialist PSOE and its union, the UGT, worked through politics. Strikes were met with troops, and the left never agreed on means or ends."}
+];
+var FAULTCARDS=[
+ {t:"Governments were agreed in advance and elections arranged to match",b:"pol"},
+ {t:"Caciques controlled rural voting in return for favours",b:"pol"},
+ {t:"A small number of families owned most of the land in the south",b:"land"},
+ {t:"Braceros were out of work for up to half the year",b:"land"},
+ {t:"The 1851 Concordat made Catholicism the state religion",b:"church"},
+ {t:"Religious orders ran many of the schools educating the middle class",b:"church"},
+ {t:"Thousands of Spanish troops were killed at Annual in 1921",b:"army"},
+ {t:"Generals claimed the right to step in by pronunciamiento",b:"army"},
+ {t:"Primo de Rivera restricted the Catalan language and flag",b:"reg"},
+ {t:"Textile mills in Catalonia and shipyards in Bilbao drove the economy",b:"reg"},
+ {t:"The CNT preferred the general strike to the ballot box",b:"left"},
+ {t:"Troops fired on rioters in Barcelona's Tragic Week, 1909",b:"left"}
+];
+var EVENTS=[
+ {d:"Apr 1931",t:"Republicans sweep the cities in municipal elections; Alfonso XIII leaves Spain and the Second Republic is declared",ph:"Reform"},
+ {d:"Dec 1931",t:"New constitution separates Church and state and bars religious orders from teaching",ph:"Reform"},
+ {d:"Aug 1932",t:"General Sanjurjo's coup in Seville fails within a day",ph:"Reform"},
+ {d:"Sep 1932",t:"Catalan Statute of Autonomy and the Agrarian Reform Law are passed",ph:"Reform"},
+ {d:"Jan 1933",t:"Casas Viejas: security forces kill anarchist villagers after a failed rising",ph:"Reform"},
+ {d:"Nov 1933",t:"General election: the Catholic CEDA becomes the largest party and backs a centre-right government",ph:"Centre-right"},
+ {d:"Oct 1934",t:"Asturias miners' rising is crushed by the Army of Africa, directed by Franco",ph:"Centre-right"},
+ {d:"Feb 1936",t:"The Popular Front narrowly wins the general election",ph:"Popular Front"},
+ {d:"Mar 1936",t:"Tens of thousands of landless labourers occupy estates in Badajoz",ph:"Popular Front"},
+ {d:"12–13 Jul 1936",t:"Falangists kill Lieutenant Castillo; in reprisal, Calvo Sotelo is murdered",ph:"Popular Front"},
+ {d:"17–18 Jul 1936",t:"The army rises in Morocco and the rising spreads to the mainland",ph:"Popular Front"}
+];
+var CHAINS=[
+ {l:"An army used to privilege and intervention",r:"Azaña cut the officer corps and closed the Zaragoza academy, which Franco ran. Resentful officers plotted, first in 1932 and again in 1936."},
+ {l:"Land hunger in the south",r:"The 1932 reform settled only a few thousand families, was reversed after 1933, and ended in mass land seizures in 1936."},
+ {l:"The Church's privileged place",r:"The 1931 constitution dissolved the Jesuits and took schools from the orders. Catholics mobilised behind the CEDA."},
+ {l:"Regional demands for self-rule",r:"Catalonia won autonomy in 1932, lost it after its revolt in October 1934, and regained it in 1936. The right saw the break-up of Spain."},
+ {l:"A militant, divided working class",r:"The left answered the CEDA's entry into government with the Asturias rising. The right now feared revolution, and the left feared fascism."},
+ {l:"A political system that never built trust in elections",r:"Under the new electoral law small shifts in votes produced huge swings in seats in 1933 and 1936, and each losing side doubted the result."}
+];
+var TRIAGE=[
+ {t:"Concentrated land ownership in the south",b:"L"},
+ {t:"The army's tradition of pronunciamientos",b:"L"},
+ {t:"The Church's privileges under the Concordat",b:"L"},
+ {t:"Catalan and Basque nationalism",b:"L"},
+ {t:"Falling agricultural exports after the 1929 Depression",b:"S"},
+ {t:"The reversal of reforms by the centre-right, 1933 to 1935",b:"S"},
+ {t:"The Asturias rising and its repression",b:"S"},
+ {t:"The Popular Front victory of February 1936",b:"S"},
+ {t:"Street violence and land seizures in spring 1936",b:"S"},
+ {t:"The murder of Calvo Sotelo",b:"T"}
+];
+var RANK=[
+ "The land question","The army and its political role","The Church and religious conflict","Regional tensions","The radicalisation and division of the left","Polarisation of Republican politics, 1933 to 1936"
+];
+var HISTORIANS=[
+ {n:"Gerald Brenan",w:"The Spanish Labyrinth (1943)",v:"Looks for the roots of the war deep in Spain's past, above all in the agrarian question and the pull of the regions against the centre. The Republic inherited problems it could not solve quickly.",lean:"Leans long-term, structural"},
+ {n:"Paul Preston",w:"The Coming of the Spanish Civil War",v:"Sees the war as the result of landowning, Catholic and military elites refusing to accept reform. The right tried legal means through the CEDA, and turned to the army when the Popular Front won.",lean:"Long-term grievances, driven by the right"},
+ {n:"Stanley Payne",w:"Spain's First Democracy",v:"Stresses the Republic's failure to build agreement on democratic rules. The left's rising in 1934 and the collapse of public order in 1936 left moderates nowhere to stand.",lean:"Short-term, political, shared by the left"},
+ {n:"Frances Lannon",w:"The Spanish Civil War",v:"Argues that regional problems were made worse by an unrepresentative, oligarchic political class that exploited or ignored them rather than solving them.",lean:"Long-term, political system"}
+];
+var QTOK=[["Examine","command"],["the",""],["long-","concept"],["and","concept"],["short-term","concept"],["causes","focus"],["of",""],["one","scope"],["20th-century","scope"],["war.","scope"]];
+var BANDS=[
+ ["0","The answer does not reach the standard described below."],
+ ["1–3","Little understanding of the question. Little relevant knowledge, mostly general statements."],
+ ["4–6","Some understanding of the question. Some knowledge, but not always accurate or relevant. Mostly narrative or description, with limited analysis."],
+ ["7–9","The question is understood but only partly addressed. Knowledge is mostly accurate and relevant and linked to the question. Some analysis, but description still dominates."],
+ ["10–12","The question is understood and addressed. Accurate, relevant knowledge used as evidence. Analysis is mostly clear and coherent, with some awareness or evaluation of different perspectives."],
+ ["13–15","Clearly focused and well structured. In-depth, accurate knowledge. Well-developed critical analysis and evaluation of perspectives, with a well-supported conclusion."]
+];
+var PARAS=[
+ {id:"A",s:["The Spanish Civil War started in 1936 and there were many causes.","Spain had lots of problems with land and with the Church.","In 1931 the king left and the Second Republic started.","Azaña made lots of reforms which some people did not like.","Then in 1933 the right won the election and in 1934 there was a rising in Asturias.","In 1936 the Popular Front won, Calvo Sotelo was murdered and the army rebelled.","This shows that there were lots of causes of the war."],
+  band:2,comment:"This is a story of 1931 to 1936, told in order. The facts are broadly right but thin (which reforms, who disliked them, and why?). No cause is explained and nothing is linked to long-term versus short-term. The last sentence restates the question rather than answering it.",fix:"Pick one cause, name it in the first sentence, give two specific pieces of evidence and say how they led to war."},
+ {id:"B",s:["The land question was a major long-term cause of the war.","In the south, estates were owned by a small elite and worked by braceros who were unemployed for much of the year.","In 1932 the Republic passed the Agrarian Reform Law, which promised to redistribute land, but by the end of 1933 only a few thousand families had been settled.","This angered the peasants, and membership of the socialist land workers' union, the FNTT, grew rapidly.","When the centre-right government reversed the reforms after 1933, tensions rose further.","Therefore the land question was an important cause of the war."],
+  band:3,comment:"Focused, accurate and relevant, and the paragraph opens with a clear claim. It explains a chain from grievance to reform to anger. It stops short of analysis: it never shows how anger became war in 1936, and it does not weigh land against other causes or bring in any perspective. The conclusion repeats the opening.",fix:"Add the 1936 land seizures and landowners' response, then end with a judgement about how important land was compared with another cause."},
+ {id:"C",s:["The land question shows most clearly how a long-term grievance became a short-term cause of war.","The concentration of estates in Andalusia and Extremadura had kept braceros poor for generations, but it only became explosive once the Republic raised and then dashed their hopes.","The 1932 Agrarian Reform Law settled only a few thousand families by the end of 1933, and the centre-right then reversed reforms and let wages fall.","When the Popular Front returned in February 1936, labourers did not wait: in March, tens of thousands occupied estates in Badajoz.","To landowners this looked like revolution, and many backed the generals as the only force that could restore order.","Preston sees this defence of privilege as the heart of the rising, while Payne would reply that the Republic's failure to keep order, more than the grievance itself, made war likely.","Both views suggest the land question was necessary but not sufficient: it supplied the anger, while the politics of 1933 to 1936 turned that anger into war."],
+  band:4,comment:"Analytical from the first sentence, and it answers the question as set by linking long-term and short-term. The evidence is precise and used as support, not decoration. Two historians are used to test the argument, and the final sentence makes a clear judgement. To reach the top band, the essay as a whole would need this quality in every paragraph and a conclusion that weighs land against the other causes.",fix:"Keep this as your model. Notice the claim, evidence, explanation, perspective and judgement."}
+];
+var BANK=["turno pacífico and caciquismo","latifundia and braceros","1851 Concordat","Annual, 1921","Africanistas","Tragic Week, 1909","CNT and FAI","Primo de Rivera, 1923–30","Azaña's military reforms, 1931","Article 26 and the religious orders","Sanjurjada, Aug 1932","Agrarian Reform Law, Sep 1932","Catalan Statute, 1932","Casas Viejas, Jan 1933","CEDA and Gil Robles","Asturias, Oct 1934","Popular Front, Feb 1936","Badajoz land seizures, Mar 1936","Castillo and Calvo Sotelo, Jul 1936","Mola's planning of the rising"];
+var CHECKS=["My introduction gives a clear thesis that answers the question","I separate long-term from short-term causes and show how they connect","Each paragraph opens with an analytical claim, not a date","I use specific evidence: names, dates, figures, laws","I make a judgement about which causes mattered most","I mention at least one historian's view and test it against evidence"];
+
+/* ---------- stations ---------- */
+var STATIONS=[
+{id:"hook",title:"A coup that half failed",mins:5,render:function(m){
+  var h=el("div",{class:"hook"});
+  var l=el("div");
+  l.appendChild(el("p",{class:"lede"},"On 17 and 18 July 1936 a group of generals rose against the Spanish Republic. They expected Madrid to fall within days. Instead the rising succeeded in about a third of the country and failed in the big cities, the industrial north and the east. A coup had turned into a civil war that would last until 1939."));
+  l.appendChild(el("p",null,"The question is why Spain reached that point. This lesson separates the deep, long-term fault lines from the short-term crisis of 1931 to 1936, practise marking paragraphs, and plan and write part of an essay."));
+  h.appendChild(l);
+  var fig=el("div",{class:"hookfig"});
+  fig.innerHTML='<svg viewBox="0 0 320 240" role="img" aria-label="Rough sketch of Spain in late July 1936: rebels in the north-west and a strip of the south-west, the Republic in the centre, east and along the north coast"><rect x="0" y="0" width="320" height="240" fill="var(--surface)"/><path d="M30 60 L120 40 L230 50 L290 80 L300 120 L270 170 L220 205 L140 215 L80 205 L40 170 L30 120 Z" fill="var(--sunk)" stroke="var(--muted)" stroke-width="1.5"/><path d="M30 60 L120 40 L150 48 L165 95 L150 140 L95 150 L60 175 L40 170 L30 120 Z" fill="var(--morado)" fill-opacity=".55"/><path d="M60 45 L180 44 L185 58 L60 62 Z" fill="var(--red)" fill-opacity=".55"/><path d="M60 180 L110 190 L120 212 L80 205 Z" fill="var(--morado)" fill-opacity=".55"/><circle cx="160" cy="125" r="4" fill="var(--ink)"/><text x="168" y="129" font-family="IBM Plex Mono,monospace" font-size="11" fill="var(--ink)">Madrid</text><circle cx="262" cy="92" r="4" fill="var(--ink)"/><text x="228" y="112" font-family="IBM Plex Mono,monospace" font-size="11" fill="var(--ink)">Barcelona</text><circle cx="110" cy="200" r="4" fill="var(--ink)"/><text x="118" y="222" font-family="IBM Plex Mono,monospace" font-size="11" fill="var(--ink)">Seville</text><rect x="12" y="10" width="12" height="10" fill="var(--morado)" fill-opacity=".55"/><text x="30" y="19" font-family="IBM Plex Mono,monospace" font-size="11" fill="var(--ink)">Rebel held</text><rect x="120" y="10" width="12" height="10" fill="var(--sunk)" stroke="var(--muted)"/><text x="138" y="19" font-family="IBM Plex Mono,monospace" font-size="11" fill="var(--ink)">Republican held</text></svg><div class="cap">A rough sketch of the split after the first week. Not to scale.</div>';
+  h.appendChild(fig); m.appendChild(h);
+  brk(m);
+  think(m,"hook","Before we start: why might a rising by the army split the country down the middle instead of simply winning or losing? What would have to be true about Spain for that to happen?");
+  brk(m);
+  m.appendChild(el("h3",{text:"Quick recall"}));
+  var t=el("div",{class:"task"}); m.appendChild(t);
+  mcqSet(t,"hookmcq",[
+   {q:"When was the Second Republic declared?",o:["January 1930","April 1931","November 1933","February 1936"],a:1,ex:"April 1931, after republicans swept the cities in municipal elections and Alfonso XIII left the country."},
+   {q:"Who ruled Spain as dictator from 1923 to 1930?",o:["José Antonio Primo de Rivera","Manuel Azaña","Miguel Primo de Rivera","José María Gil Robles"],a:2,ex:"General Miguel Primo de Rivera. His son José Antonio founded the Falange in 1933."},
+   {q:"Which party won the most seats in the November 1933 election?",o:["PSOE","CEDA","The Popular Front","The Falange"],a:1,ex:"The CEDA, a Catholic party led by Gil Robles. It backed a Radical-led government and joined it in October 1934."},
+   {q:"Whose murder on 13 July 1936 hastened the rising?",o:["José Castillo","Francisco Largo Caballero","José Calvo Sotelo","José Sanjurjo"],a:2,ex:"José Calvo Sotelo, monarchist leader, killed by police officers and socialist gunmen in revenge for the Falangist killing of Lieutenant Castillo the day before."}
+  ],"Knowledge");
+}},
+{id:"faults",title:"Six fault lines",mins:14,render:function(m){
+  m.appendChild(el("p",{class:"lede"},"Historians often describe pre-war Spain as a country cut by fault lines. None of them caused the war alone, but each one set Spaniards against each other long before 1936. Read the six, then sort the evidence."));
+  var cards=el("div",{class:"cards"});
+  FAULTS.forEach(function(f,i){var c=el("div",{class:"card"});c.appendChild(el("span",{class:"eyebrow",text:"Fault line "+(i+1)}));c.appendChild(el("h4",{text:f.t}));c.appendChild(el("p",{text:f.b}));cards.appendChild(c);});
+  m.appendChild(cards);
+  brk(m);
+  m.appendChild(el("h3",{text:"Sort the evidence"}));
+  var t=el("div",{class:"task"}); m.appendChild(t);
+  sorter(t,"faultsort",FAULTCARDS,FAULTS.map(function(f){return {id:f.id,label:f.t};}),"Causation");
+  brk(m);
+  think(m,"faults1","Which two fault lines overlapped the most? For example, who stood together on the land question, and who stood together on the Church? Explain how one grievance fed another.");
+  brk(m);
+  think(m,"faults2","Spain had most of these problems in 1900 and did not have a civil war until 1936. What does that tell you about long-term causes on their own?");
+}},
+{id:"timeline",title:"The Republic, 1931 to 1936",mins:12,render:function(m){
+  m.appendChild(el("p",{class:"lede"},"The Second Republic lasted five years and swung from left to right and back. Put these events in order. Once you check, each will show its date and the phase of the Republic it belongs to."));
+  var t=el("div",{class:"task"}); m.appendChild(t);
+  t.appendChild(el("p",{class:"howto",text:"Tap events in the order they happened. Tap an event in your list to send it back."}));
+  var seq=el("div",{class:"seq"}); var poolL=el("div",{class:"pool"}); poolL.style.flexDirection="column"; poolL.style.alignItems="stretch"; var ol=el("ol");
+  seq.appendChild(poolL); seq.appendChild(ol); t.appendChild(seq);
+  var order=(S.data.seq&&S.data.seq.order)||[]; var checked=!!(S.data.seq&&S.data.seq.checked);
+  var sh=shuffle(EVENTS.map(function(_,i){return i;}),23);
+  var row=el("div",{class:"row"}); var chk=el("button",{class:"btn",type:"button",text:"Check order"}); var rst=el("button",{class:"btn ghost",type:"button",text:"Reset"}); row.appendChild(chk); row.appendChild(rst); t.appendChild(row); var f=fb(t);
+  function persist(){S.data.seq={order:order,checked:checked};save();}
+  function draw(){
+    poolL.innerHTML=""; ol.innerHTML="";
+    sh.forEach(function(i){ if(order.indexOf(i)>-1)return; var c=el("button",{class:"chip",type:"button",text:EVENTS[i].t}); c.addEventListener("click",function(){order.push(i);checked=false;persist();draw();}); poolL.appendChild(c);});
+    if(!poolL.children.length)poolL.appendChild(el("span",{class:"howto",text:"All placed. Check your order."}));
+    order.forEach(function(i,pos){ var li=el("li"); var c=el("button",{class:"chip",type:"button"}); c.innerHTML=(checked?'<span class="date">'+EVENTS[i].d+' · '+EVENTS[i].ph+'</span>':'')+EVENTS[i].t;
+      if(checked)c.classList.add(i===pos?"right":"wrong");
+      c.addEventListener("click",function(){order.splice(pos,1);checked=false;persist();draw();}); li.appendChild(c); ol.appendChild(li);});
+  }
+  chk.addEventListener("click",function(){ if(order.length<EVENTS.length){f.className="fb meh";f.textContent=(EVENTS.length-order.length)+" event(s) still to place.";return;}
+    checked=true; var g=0; order.forEach(function(i,p){if(i===p)g++;}); setScore("seq",g,EVENTS.length,"Chronology"); persist(); draw();
+    f.className="fb "+(g===EVENTS.length?"good":"meh"); f.textContent=g+" of "+EVENTS.length+" in exactly the right position."+(g<EVENTS.length?" Tap the red ones out and try again.":"");});
+  rst.addEventListener("click",function(){order=[];checked=false;persist();draw();f.textContent="";});
+  draw();
+  brk(m);
+  m.appendChild(el("h3",{text:"Three phases"}));
+  var cards=el("div",{class:"cards"});
+  [["1931 to 1933","Reform","Azaña's left-republican and socialist coalition attacks the Church's privileges, shrinks the army, grants Catalan autonomy and begins land reform. It raises hopes on the left and alarms the right, yet moves too slowly for the anarchists."],
+   ["1933 to 1936","Centre-right","The Radicals govern with CEDA support. Land and labour reforms are reversed and Catalan autonomy suspended after 1934. The left calls these the bienio negro, the two black years."],
+   ["Feb to Jul 1936","Popular Front","A left alliance wins narrowly. Azaña becomes president, but the government cannot control land seizures, strikes and killings by both sides. The generals plan their rising."]].forEach(function(p){var c=el("div",{class:"card"});c.appendChild(el("span",{class:"eyebrow",text:p[0]}));c.appendChild(el("h4",{text:p[1]}));c.appendChild(el("p",{text:p[2]}));cards.appendChild(c);});
+  m.appendChild(cards);
+  brk(m);
+  think(m,"timeline1","Look at Asturias in October 1934. The left rose against a legally elected government, and the army crushed it. Why do many historians treat 1934 as a dress rehearsal for 1936, for both sides?");
+}},
+{id:"chains",title:"From fault line to crisis",mins:8,render:function(m){
+  m.appendChild(el("p",{class:"lede"},"A strong essay does not list long-term causes and then short-term causes in two separate heaps. It shows how each old grievance was reopened after 1931. Match each fault line to the way it erupted under the Republic."));
+  var t=el("div",{class:"task"}); m.appendChild(t);
+  t.appendChild(el("p",{class:"howto",text:"Tap a fault line on the left, then its match on the right. Tap a matched pair to undo it."}));
+  var pairs=(S.data.pairs)||{}; var selL=null; var checked=false;
+  var rOrder=shuffle(CHAINS.map(function(_,i){return i;}),41);
+  var wrap=el("div",{class:"pairs"}); var L=el("div",{class:"col"}); var R=el("div",{class:"col"}); wrap.appendChild(L); wrap.appendChild(R); t.appendChild(wrap);
+  var row=el("div",{class:"row"}); var chk=el("button",{class:"btn",type:"button",text:"Check matches"}); row.appendChild(chk); t.appendChild(row); var f=fb(t);
+  function leftOf(ri){for(var k in pairs){if(pairs[k]===ri)return +k;}return null;}
+  function draw(){
+    L.innerHTML="";R.innerHTML="";
+    CHAINS.forEach(function(c,i){var b=el("button",{class:"chip",type:"button"}); var num=Object.keys(pairs).indexOf(String(i));
+      b.innerHTML=(pairs[i]!=null?'<span class="badge">'+(i+1)+'</span>':'')+c.l; if(selL===i)b.classList.add("sel");
+      if(checked&&pairs[i]!=null)b.classList.add(pairs[i]===i?"right":"wrong");
+      b.addEventListener("click",function(){ if(pairs[i]!=null){delete pairs[i];} else selL=(selL===i?null:i); checked=false; S.data.pairs=pairs; save(); draw();}); L.appendChild(b);});
+    rOrder.forEach(function(ri){var b=el("button",{class:"chip",type:"button"}); var li=leftOf(ri);
+      b.innerHTML=(li!=null?'<span class="badge">'+(li+1)+'</span>':'')+CHAINS[ri].r;
+      if(checked&&li!=null)b.classList.add(li===ri?"right":"wrong");
+      b.addEventListener("click",function(){ if(li!=null){delete pairs[li];} else if(selL!=null){pairs[selL]=ri;selL=null;} checked=false; S.data.pairs=pairs; save(); draw();}); R.appendChild(b);});
+  }
+  chk.addEventListener("click",function(){var n=Object.keys(pairs).length; if(n<CHAINS.length){f.className="fb meh";f.textContent=(CHAINS.length-n)+" pair(s) still to make.";return;}
+    checked=true; var g=0; for(var k in pairs){if(pairs[k]===+k)g++;} setScore("pairs",g,CHAINS.length,"Causation"); draw();
+    f.className="fb "+(g===CHAINS.length?"good":"meh"); f.textContent=g+" of "+CHAINS.length+" matched correctly.";});
+  draw();
+  brk(m);
+  m.appendChild(el("h3",{text:"Long-term, short-term or trigger?"}));
+  var t2=el("div",{class:"task"}); m.appendChild(t2);
+  sorter(t2,"triage",TRIAGE,[{id:"L",label:"Long-term (before 1931)"},{id:"S",label:"Short-term (1929 to 1936)"},{id:"T",label:"Trigger"}],"Causation");
+  brk(m);
+  think(m,"chains1","Some historians call the Depression a medium-term cause rather than a short-term one. Does the label matter for your essay, or only that you explain when and how a factor worked?");
+}},
+{id:"weigh",title:"Weigh the causes",mins:10,render:function(m){
+  m.appendChild(el("p",{class:"lede"},"Paper 2 rewards judgement. Rank the six causes from most to least important, then read how four historians see it and place yourself on the line."));
+  var t=el("div",{class:"task"}); m.appendChild(t);
+  t.appendChild(el("p",{class:"howto",text:"Use the arrows to reorder. Your ranking is saved as you go."}));
+  var order=(S.data.rank)||RANK.map(function(_,i){return i;});
+  var ul=el("ul",{class:"ranklist"}); t.appendChild(ul);
+  function draw(){ul.innerHTML=""; order.forEach(function(ri,pos){var li=el("li"); li.appendChild(el("span",{class:"pos",text:String(pos+1)})); li.appendChild(el("span",{text:RANK[ri]}));
+    var mv=el("span",{class:"mv"}); var up=el("button",{type:"button","aria-label":"Move up",text:"↑"}); var dn=el("button",{type:"button","aria-label":"Move down",text:"↓"});
+    up.disabled=pos===0; dn.disabled=pos===order.length-1;
+    up.addEventListener("click",function(){var x=order[pos-1];order[pos-1]=order[pos];order[pos]=x;S.data.rank=order;save();draw();});
+    dn.addEventListener("click",function(){var x=order[pos+1];order[pos+1]=order[pos];order[pos]=x;S.data.rank=order;save();draw();});
+    mv.appendChild(up);mv.appendChild(dn);li.appendChild(mv);ul.appendChild(li);});}
+  draw();
+  think(m,"weigh1","Defend your number one. What makes it more important than your number two? Try the test: if this cause had been missing, would there still have been a war in 1936?");
+  brk(m);
+  m.appendChild(el("h3",{text:"The historians"}));
+  var h=el("div",{class:"hist"});
+  HISTORIANS.forEach(function(x){var c=el("div",{class:"card"});c.appendChild(el("h4",{text:x.n}));c.appendChild(el("span",{class:"eyebrow",text:x.w}));c.appendChild(el("p",{text:x.v}));c.appendChild(el("span",{class:"lean",text:x.lean}));h.appendChild(c);});
+  m.appendChild(h);
+  m.appendChild(el("p",{class:"howto",text:"These are summaries in plain words, not quotations. Use them as positions to argue with."}));
+  brk(m);
+  var sl=el("div",{class:"slider"});
+  sl.appendChild(el("p",null,"“The Spanish Civil War was caused mainly by long-term structural problems.” Where do you stand?"));
+  var inp=el("input",{type:"range",min:"0",max:"100",step:"5",id:"stance","aria-label":"Your position"}); inp.value=S.data.stance!=null?S.data.stance:50;
+  var out=el("div",{class:"wc"});
+  function lab(){var v=+inp.value; out.textContent=v<=20?"Mostly short-term: the politics of 1931 to 1936":v<=40?"Leaning short-term":v<60?"Balanced: both, and they interact":v<80?"Leaning long-term":"Mostly long-term: the fault lines made war likely";}
+  inp.addEventListener("input",function(){S.data.stance=+inp.value;save();lab();}); lab();
+  sl.appendChild(inp); var ends=el("div",{class:"ends"}); ends.appendChild(el("span",{text:"Short-term crisis"})); ends.appendChild(el("span",{text:"Long-term structures"})); sl.appendChild(ends); sl.appendChild(out); m.appendChild(sl);
+  think(m,"weigh2","Which historian is closest to where you placed yourself? Name one piece of evidence that supports them, and one that a rival would use against them.");
+}},
+{id:"question",title:"Unpack the question",mins:5,render:function(m){
+  m.appendChild(el("p",{class:"lede"},"Every mark starts with reading the question properly. This one was set in May 2018. Label each part."));
+  var t=el("div",{class:"task"}); m.appendChild(t);
+  var cats=[["command","Command term"],["focus","Focus"],["concept","Key concept"],["scope","Scope"],["","Clear"]];
+  var brush="command"; var tags=(S.data.brush)||{};
+  var br=el("div",{class:"brushes"}); var bBtns=[];
+  cats.forEach(function(c){var b=el("button",{class:"brush"+(c[0]?" c-"+c[0]:""),type:"button","aria-pressed":String(c[0]===brush),text:c[1]}); b.addEventListener("click",function(){brush=c[0];bBtns.forEach(function(x){x.setAttribute("aria-pressed",String(x===b));});}); bBtns.push(b); br.appendChild(b);});
+  t.appendChild(el("p",{class:"howto",text:"Pick a brush, then tap the words it covers. Not every word needs a label."}));
+  t.appendChild(br);
+  var q=el("div",{class:"qline"}); t.appendChild(q);
+  var toks=QTOK.map(function(w,i){var b=el("button",{class:"tok",type:"button",text:w[0]}); b.addEventListener("click",function(){tags[i]=(tags[i]===brush?"":brush); S.data.brush=tags; save(); paint();}); q.appendChild(b); return b;});
+  function paint(){toks.forEach(function(b,i){b.className="tok"+(tags[i]?" c-"+tags[i]:"");});}
+  paint();
+  var row=el("div",{class:"row"}); var chk=el("button",{class:"btn",type:"button",text:"Check labels"}); row.appendChild(chk); t.appendChild(row); var f=fb(t);
+  chk.addEventListener("click",function(){var g=0; QTOK.forEach(function(w,i){if((tags[i]||"")===w[1])g++;}); setScore("brush",g,QTOK.length,"Question analysis");
+    f.className="fb "+(g===QTOK.length?"good":"meh"); f.textContent=g+" of "+QTOK.length+" words labelled as an examiner would. Examine is the command term; causes is the focus; long- and short-term is the concept you must handle; one 20th-century war is the scope.";});
+  brk(m);
+  var box=el("div",{class:"think"});
+  box.appendChild(el("span",{class:"eyebrow",text:"Examiner's note"}));
+  box.appendChild(el("p",null,"Examine asks you to consider an argument or concept in a way that uncovers its assumptions and interrelationships. So a list of causes will not do: you need to show how long-term and short-term causes connected, and which mattered more. Most recent causes of war questions ask for two wars. The Spanish Civil War will usually be one of your pair, so learn it well enough to compare."));
+  m.appendChild(box);
+  think(m,"question1","Here is a recent question: “The most important causes of wars were political.” How would you use the Spanish Civil War to agree, and how would you use it to disagree?");
+}},
+{id:"mark",title:"Mark the paragraph",mins:14,render:function(m){
+  m.appendChild(el("p",{class:"lede"},"Three students answered the May 2018 question. Read each paragraph, tag its sentences, then award a band. Paper 2 essays are marked out of 15 using the bands below."));
+  var sc=el("div",{class:"scroll"}); var tb=el("table",{class:"bands"}); tb.innerHTML="<thead><tr><th>Marks</th><th>What the examiner sees</th></tr></thead>";
+  var tbody=el("tbody"); BANDS.forEach(function(b){var tr=el("tr");tr.appendChild(el("th",{text:b[0]}));tr.appendChild(el("td",{text:b[1]}));tbody.appendChild(tr);}); tb.appendChild(tbody); sc.appendChild(tb); m.appendChild(sc);
+  m.appendChild(el("p",{class:"howto",text:"Bands are for whole essays. Here we use them to judge the quality of a single paragraph."}));
+  var lg=el("div",{class:"legend"}); [["t-k","Knowledge","var(--tag-k)"],["t-a","Analysis","var(--tag-a)"],["t-e","Evaluation","var(--tag-e)"],["t-n","Narrative or filler","var(--tag-n)"]].forEach(function(x){var s=el("span",{text:x[1]});s.style.background=x[2];lg.appendChild(s);});
+  var tapNote=el("p",{class:"howto",text:"Tap a sentence to cycle its tag: knowledge, analysis, evaluation, narrative, none. Then award a band."});
+  var CYC=["","k","a","e","n"];
+  var st=S.data.mark||{};
+  PARAS.forEach(function(p){
+    var ps=st[p.id]||{tags:{},band:null,shown:false}; st[p.id]=ps;
+    brk(m); m.appendChild(tapNote.cloneNode(true)); m.appendChild(lg.cloneNode(true));
+    var det=el("details",{class:"bandref"}); det.appendChild(el("summary",{text:"Show the markbands"})); var dsc=el("div",{class:"scroll"}); dsc.appendChild(tb.cloneNode(true)); det.appendChild(dsc); m.appendChild(det);
+    var box=el("div",{class:"para"}); box.appendChild(el("h4",{text:"Paragraph "+p.id}));
+    var tx=el("div",{class:"ptext"});
+    p.s.forEach(function(s,si){var b=el("button",{class:"sent",type:"button",text:s+" "}); function pt(){b.className="sent"+(ps.tags[si]?" t-"+ps.tags[si]:"");} pt();
+      b.addEventListener("click",function(){var cur=ps.tags[si]||""; ps.tags[si]=CYC[(CYC.indexOf(cur)+1)%CYC.length]; S.data.mark=st; save(); pt();}); tx.appendChild(b);});
+    box.appendChild(tx);
+    var bp=el("div",{class:"bandpick","aria-label":"Award a band"}); var bbs=[];
+    BANDS.forEach(function(b,bi){var x=el("button",{type:"button",text:b[0],"aria-pressed":String(ps.band===bi)}); x.addEventListener("click",function(){ps.band=bi; S.data.mark=st; save(); bbs.forEach(function(y,yi){y.setAttribute("aria-pressed",String(yi===bi));});}); bbs.push(x); bp.appendChild(x);});
+    box.appendChild(bp);
+    var why=el("textarea",{id:"why-"+p.id,"aria-label":"Why this band"}); why.placeholder="Why this band? One or two sentences."; why.value=S.text["why"+p.id]||""; why.style.marginTop="10px"; why.style.minHeight="60px";
+    why.addEventListener("input",function(){S.text["why"+p.id]=why.value;save();}); box.appendChild(why);
+    var row=el("div",{class:"row"}); var rv=el("button",{class:"btn ghost",type:"button",text:"Show examiner comment"}); row.appendChild(rv); box.appendChild(row);
+    var v=el("div",{class:"verdict"}); v.hidden=true; box.appendChild(v);
+    function show(){ v.hidden=false; var diff=ps.band==null?null:Math.abs(ps.band-p.band);
+      v.innerHTML="<p><strong>Examiner's band: "+BANDS[p.band][0]+"</strong>"+(ps.band==null?"":" · You gave "+BANDS[ps.band][0]+(diff===0?". Spot on.":diff===1?". One band out, which is close.":". Look again at the descriptors."))+"</p><p>"+p.comment+"</p><p><em>Next step:</em> "+p.fix+"</p>";}
+    rv.addEventListener("click",function(){ps.shown=true; S.data.mark=st; save(); show(); scoreAll();});
+    if(ps.shown)show();
+    m.appendChild(box);
+  });
+  function scoreAll(){var g=0,n=0; PARAS.forEach(function(p){var ps=st[p.id]; if(ps&&ps.shown&&ps.band!=null){n++; var d=Math.abs(ps.band-p.band); g+=d===0?1:d===1?0.5:0;}}); if(n)setScore("mark",g,PARAS.length,"Assessment");}
+  brk(m);
+  var ref=el("div",{class:"para"}); ref.appendChild(el("h4",{text:"Paragraph A, as written"})); ref.appendChild(el("p",{class:"ptext",text:PARAS[0].s.join(" ")})); m.appendChild(ref);
+  var rw=think(m,"rewrite","Now rewrite Paragraph A so that it would reach at least the 7 to 9 band. Choose one cause, open with a claim, use two specific pieces of evidence, and end by linking back to the question.","Your improved paragraph…");
+  rw.style.minHeight="180px";
+}},
+{id:"essay",title:"Essay practice",mins:18,render:function(m){
+  m.appendChild(el("p",{class:"lede"},"Examine the long- and short-term causes of one 20th-century war. Build a thesis, plan four paragraphs, then write your introduction and first body paragraph against the clock."));
+  m.appendChild(el("h3",{text:"1. Build your thesis"}));
+  var th=el("div",{class:"thesis"});
+  var parts=[
+   ["th1","The war grew from",["deep long-term divisions over land, religion, the army and the regions","the political failures of the Second Republic between 1931 and 1936","a combination of long-standing social divisions and the polarised politics of the Republic"]],
+   ["th2","but it was",["the short-term crisis of 1933 to 1936","the failure of reform to deliver what it promised","the right's refusal to accept the Popular Front's victory"]],
+   ["th3","that",["turned these grievances into armed conflict.","made a military rising both likely and popular with one half of Spain.","explains why war broke out in 1936 rather than earlier."]]];
+  var sels={};
+  parts.forEach(function(p){var lab=el("label",{for:p[0],text:p[1]}); var s=el("select",{id:p[0]}); p[2].forEach(function(o,oi){var op=el("option",{value:String(oi),text:o}); s.appendChild(op);}); s.value=S.data[p[0]]||"0"; s.addEventListener("change",function(){S.data[p[0]]=s.value;save();}); sels[p[0]]=s; th.appendChild(lab); th.appendChild(s);});
+  var use=el("button",{class:"btn",type:"button",text:"Build my thesis"}); var r=el("div",{class:"row"}); r.appendChild(use); th.appendChild(r);
+  var tt=el("textarea",{id:"thesis","aria-label":"Your thesis"}); tt.placeholder="Your thesis appears here. Edit it into your own words."; tt.value=S.text.thesis||""; tt.addEventListener("input",function(){S.text.thesis=tt.value;save();}); th.appendChild(tt);
+  use.addEventListener("click",function(){var a=parts[0][2][+sels.th1.value],b=parts[1][2][+sels.th2.value],c=parts[2][2][+sels.th3.value]; tt.value="The Spanish Civil War grew from "+a+", but it was "+b+" that "+c; S.text.thesis=tt.value; save();});
+  m.appendChild(th);
+  brk(m); qrem(m);
+  m.appendChild(el("h3",{text:"2. Plan four paragraphs"}));
+  m.appendChild(el("p",{class:"howto",text:"Tap into a paragraph box, then tap evidence to add it. Start each box with the claim that paragraph will make."}));
+  var bank=el("div",{class:"bank"}); var last=null; var plan=el("div",{class:"plan"}); var boxes=[];
+  ["Paragraph 1","Paragraph 2","Paragraph 3","Paragraph 4"].forEach(function(n,i){var d=el("div"); d.appendChild(el("label",{for:"plan"+i,text:n})); var a=el("textarea",{id:"plan"+i}); a.placeholder=i===0?"Claim: The land question was… Evidence:":"Claim… Evidence:"; a.value=S.text["plan"+i]||""; a.addEventListener("focus",function(){last=a;}); a.addEventListener("input",function(){S.text["plan"+i]=a.value;save();}); d.appendChild(a); plan.appendChild(d); boxes.push(a);});
+  BANK.forEach(function(b){var c=el("button",{class:"chip",type:"button",text:b}); c.addEventListener("mousedown",function(e){e.preventDefault();}); c.addEventListener("click",function(){var a=last||boxes[0]; a.value=(a.value&&!/\s$/.test(a.value)?a.value+"; ":a.value)+b; a.dispatchEvent(new Event("input")); a.focus();}); bank.appendChild(c);});
+  m.appendChild(bank); m.appendChild(plan);
+  brk(m); qrem(m);
+  m.appendChild(el("h3",{text:"3. Write against the clock"}));
+  var tr=el("div",{class:"row"}); var tm=el("span",{class:"timer",id:"etimer",text:"15:00"}); var tb=el("button",{class:"btn",type:"button",text:"Start 15 minutes"}); tr.appendChild(tm); tr.appendChild(tb); m.appendChild(tr);
+  var left=900, iv=null;
+  tb.addEventListener("click",function(){ if(iv){clearInterval(iv);iv=null;tb.textContent="Resume";return;} tb.textContent="Pause"; iv=setInterval(function(){left--; if(left<=0){left=0;clearInterval(iv);iv=null;tb.textContent="Time";} tm.textContent=String(Math.floor(left/60)).padStart(2,"0")+":"+String(left%60).padStart(2,"0");},1000);});
+  var intro=el("textarea",{id:"intro","aria-label":"Introduction"}); intro.placeholder="Introduction: context, definition of long- and short-term, thesis, roadmap."; intro.style.minHeight="150px"; intro.value=S.text.intro||"";
+  var body=el("textarea",{id:"body1","aria-label":"First body paragraph"}); body.placeholder="Body paragraph 1: claim, evidence, explanation, perspective, link back."; body.style.minHeight="220px"; body.style.marginTop="10px"; body.value=S.text.body1||"";
+  var wc=el("div",{class:"wc"});
+  function count(){var w=(intro.value+" "+body.value).trim().split(/\s+/).filter(Boolean).length; wc.textContent=w+" words so far. Aim for 350 to 450 in fifteen minutes.";}
+  intro.addEventListener("input",function(){S.text.intro=intro.value;save();count();}); body.addEventListener("input",function(){S.text.body1=body.value;save();count();});
+  m.appendChild(intro); m.appendChild(body); m.appendChild(wc); count();
+  brk(m); qrem(m);
+  m.appendChild(el("h3",{text:"4. Check your own work"}));
+  var ck=el("div",{class:"check"}); var cst=S.data.checks||{};
+  CHECKS.forEach(function(c,i){var l=el("label"); var x=el("input",{type:"checkbox",id:"ck"+i}); x.checked=!!cst[i]; x.addEventListener("change",function(){cst[i]=x.checked;S.data.checks=cst;save();}); l.appendChild(x); l.appendChild(el("span",{text:c})); ck.appendChild(l);});
+  m.appendChild(ck);
+}},
+{id:"debrief",title:"Debrief",mins:4,render:function(m){
+  m.appendChild(el("p",{class:"lede"},"Here is how the lesson went, skill by skill. Unfinished tasks show as not yet tried."));
+  var groups={"Knowledge":[],"Chronology":[],"Causation":[],"Question analysis":[],"Assessment":[],"Writing":[]};
+  for(var k in S.scores){var s=S.scores[k]; if(groups[s.skill])groups[s.skill].push(s);}
+  var words=((S.text.intro||"")+" "+(S.text.body1||"")).trim().split(/\s+/).filter(Boolean).length;
+  var ticks=0; var cst=S.data.checks||{}; for(var i=0;i<CHECKS.length;i++){if(cst[i])ticks++;}
+  if(words>0||ticks>0) groups["Writing"].push({got:Math.min(1,words/350)*3+ticks/CHECKS.length*3,total:6});
+  var sk=el("div",{class:"skills"}); var lines=[];
+  Object.keys(groups).forEach(function(g){var arr=groups[g]; var got=0,tot=0; arr.forEach(function(x){got+=x.got;tot+=x.total;}); var pct=tot?Math.round(got/tot*100):null;
+    var r=el("div",{class:"skill"}); r.appendChild(el("span",{class:"nm",text:g})); var tr=el("div",{class:"track"}); var fl=el("div",{class:"fill"}); fl.style.width=(pct||0)+"%"; tr.appendChild(fl); r.appendChild(tr); r.appendChild(el("span",{class:"v",text:pct==null?"not yet":pct+"%"})); sk.appendChild(r);
+    lines.push(g+": "+(pct==null?"not yet tried":pct+"%"));});
+  m.appendChild(sk);
+  var rk=(S.data.rank||RANK.map(function(_,i){return i;})).map(function(i,p){return (p+1)+". "+RANK[i];});
+  var rf1=think(m,"reflect1","One thing you can now do that you could not do at the start of the lesson:");
+  var rf2=think(m,"reflect2","One thing to practise next:");
+  brk(m);
+  m.appendChild(el("h3",{text:"Your lesson summary"}));
+  var pre=el("pre",{class:"sum"}); m.appendChild(pre);
+  function build(){var t=S.text; pre.textContent=["Spanish Civil War: long- and short-term causes","","Skills","  "+lines.join("\n  "),"","My ranking of causes","  "+rk.join("\n  "),"","My position (0 short-term, 100 long-term): "+(S.data.stance!=null?S.data.stance:50),"","Thesis","  "+(t.thesis||"(not written)"),"","Rewritten Paragraph A","  "+(t.rewrite||"(not written)"),"","Introduction","  "+(t.intro||"(not written)"),"","Body paragraph 1","  "+(t.body1||"(not written)"),"","Can now do: "+(t.reflect1||""),"To practise: "+(t.reflect2||"")].join("\n");}
+  build(); rf1.addEventListener("input",build); rf2.addEventListener("input",build);
+  var row=el("div",{class:"row"}); var cp=el("button",{class:"btn",type:"button",text:"Copy summary"}); var msg=el("span",{class:"wc"}); row.appendChild(cp); row.appendChild(msg); m.appendChild(row);
+  cp.addEventListener("click",function(){build(); var txt=pre.textContent;
+    function fallback(){var rg=document.createRange(); rg.selectNodeContents(pre); var sel=window.getSelection(); sel.removeAllRanges(); sel.addRange(rg); msg.textContent="Selected. Copy it with your keyboard or menu.";}
+    try{navigator.clipboard.writeText(txt).then(function(){msg.textContent="Copied. Paste it into a message to send it on.";},fallback);}catch(e){fallback();}});
+  var rs=el("div",{class:"row"}); var clr=el("button",{class:"btn ghost",type:"button",text:"Clear all my answers"}); var sure=el("button",{class:"btn",type:"button",text:"Yes, clear everything"}); sure.hidden=true;
+  clr.addEventListener("click",function(){sure.hidden=false;}); sure.addEventListener("click",function(){S={scores:{},text:{},data:{}}; save(); go(0,0);});
+  rs.appendChild(clr); rs.appendChild(sure); rs.style.marginTop="26px"; m.appendChild(rs);
+}}
+];
+
+/* ---------- shell ---------- */
+var rail=$("#rail"), main=$("#main"); var cur=S.cur||0;
+function railDraw(){rail.innerHTML=""; var cum=0; STATIONS.forEach(function(s,i){cum+=s.mins; var b=el("button",{class:"railbtn",type:"button","aria-current":String(i===cur)}); if((S.visited||{})[i]&&i!==cur)b.classList.add("done");
+  b.innerHTML='<span class="n">'+String(i+1).padStart(2,"0")+'</span><span class="lbl">'+s.title+'</span><span class="m">'+s.mins+'′</span>'; b.addEventListener("click",function(){go(i);}); rail.appendChild(b);});
+  rail.appendChild(el("div",{class:"railtotal",text:"Total "+cum+" minutes"}));}
+function go(i,si){cur=i; S.cur=i; S.visited=S.visited||{}; S.visited[i]=true; railDraw();
+  var s=STATIONS[i]; var holder=el("div"); s.render(holder);
+  var slides=[el("section",{class:"slide"})];
+  Array.prototype.slice.call(holder.childNodes).forEach(function(n){ if(n.classList&&n.classList.contains("brk")){slides.push(el("section",{class:"slide"}));} else slides[slides.length-1].appendChild(n);});
+  if(si==null)si=0; if(si<0)si=slides.length-1; si=Math.min(si,slides.length-1); S.slide=si; save();
+  main.innerHTML=""; var hd=el("div",{class:"st-head"}); hd.appendChild(el("h2",{text:s.title}));
+  var start=0; for(var k=0;k<i;k++)start+=STATIONS[k].mins;
+  hd.appendChild(el("span",{class:"meta",text:"Station "+(i+1)+" of "+STATIONS.length+" · "+s.mins+" min · minute "+start+" to "+(start+s.mins)}));
+  var dots=el("div",{class:"dots","aria-label":"Slides in this station"});
+  slides.forEach(function(_,d){var b=el("button",{type:"button","aria-label":"Slide "+(d+1),"aria-current":String(d===si)}); b.addEventListener("click",function(){go(i,d);}); dots.appendChild(b);});
+  dots.appendChild(el("span",{class:"meta",text:"Slide "+(si+1)+" of "+slides.length}));
+  hd.appendChild(dots); main.appendChild(hd);
+  main.appendChild(slides[si]);
+  var nx=el("div",{class:"nextrow"});
+  var pv=el("button",{class:"btn ghost",type:"button",text:"Previous"}); pv.disabled=(i===0&&si===0);
+  pv.addEventListener("click",function(){ if(si>0)go(i,si-1); else go(i-1,-1);});
+  var last=si===slides.length-1; var nt;
+  if(!last){nt=el("button",{class:"btn",type:"button",text:"Next"}); nt.addEventListener("click",function(){go(i,si+1);});}
+  else {nt=el("button",{class:"btn",type:"button",text:i===STATIONS.length-1?"Back to start":"Next station: "+STATIONS[i+1].title}); nt.addEventListener("click",function(){go(i===STATIONS.length-1?0:i+1,0);});}
+  nx.appendChild(pv); nx.appendChild(nt); main.appendChild(nx); updPlan();
+  window.scrollTo(0,0);}
+/* lesson clock */
+var clockT=$("#clockT"),clockBtn=$("#clockBtn"),clockPlan=$("#clockPlan"); var running=false; var elapsed=S.elapsed||0; var tick=null;
+function fmt(s){return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0");}
+function updPlan(){var start=0; for(var k=0;k<cur;k++)start+=STATIONS[k].mins; var end=start+STATIONS[cur].mins; var mins=elapsed/60;
+  clockPlan.textContent=mins>end?"Behind plan · this station ends at "+end+"′":"On plan · this station ends at "+end+"′";}
+clockT.textContent=fmt(elapsed); if(elapsed)clockBtn.textContent="Resume";
+clockBtn.addEventListener("click",function(){ if(running){clearInterval(tick);running=false;clockBtn.textContent="Resume";return;}
+  running=true; clockBtn.textContent="Pause"; tick=setInterval(function(){elapsed++; S.elapsed=elapsed; if(elapsed%10===0)save(); clockT.textContent=fmt(elapsed); if(elapsed%30===0)updPlan();},1000);});
+go(cur,S.slide||0);
+})();
+</script>
